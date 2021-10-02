@@ -124,7 +124,7 @@
           <!-- FIM DO BLOCO: Registro de Usuário -->
           <div>
             <button class="btn btn-primary" type="submit">
-              Add funcionário
+              <i class="fas fa-user-plus"></i> Add funcionário
             </button>
           </div>
         </form>
