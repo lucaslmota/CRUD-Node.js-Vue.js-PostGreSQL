@@ -2,14 +2,27 @@
   "name": "back",
   "version": "1.0.0",
   "description": "Aplicação CRUD em NODE.js",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon",
+    "lint": "eslint --ext .js, .html -f ./node_modules/eslint-friendly-formater . --fix",
+    "prepush": "npm run lint",
+    "start": "node sever.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "^7.32.0"
+    "eslint": "^7.32.0",
+    "husky": "^7.0.2",
+    "nodemon": "^2.0.13"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "eslint-friendly-formatter": "^4.0.1",
+    "express": "^4.17.1",
+    "express-promise-router": "^4.1.0",
+    "pg": "^8.7.1"
   }
 }
