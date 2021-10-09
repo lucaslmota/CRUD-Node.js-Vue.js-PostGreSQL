@@ -123,7 +123,11 @@
           </div>
           <!-- FIM DO BLOCO: Registro de Usuário -->
           <div>
-            <button @click="submitNewEmployee" class="btn btn-primary" type="submit">
+            <button
+              @click="submitNewEmployee"
+              class="btn btn-primary"
+              type="submit"
+            >
               <i class="fas fa-user-plus"></i> Add funcionário
             </button>
           </div>
@@ -134,8 +138,8 @@
 </template>
 
 <script>
-import {required} from 'vuelidate/lib/validators';
-import EmployeeService from '../../services/EmployeeService';
+import { required } from "vuelidate/lib/validators";
+import EmployeeService from "../../services/EmployeeService";
 
 export default {
   comments: {
@@ -148,40 +152,50 @@ export default {
         job_role: null,
         salary: null,
         birth: null,
-        employee_registration: null
+        employee_registration: null,
       },
       isSubmitted: false,
     };
   },
-  validations:{
-    employeeForm:{
-      name:{required},
-      job_role:{required},
-      salary:{required},
-      birth:{required},
-      employee_registration:{required}
-    }
+  validations: {
+    employeeForm: {
+      name: { required },
+      job_role: { required },
+      salary: { required },
+      birth: { required },
+      employee_registration: { required },
+    },
   },
   methods: {
-    handleSubmitForm() {
-      this.isSubmitted = true;
-      
-      this.$v.$touch();
-      if(this.$v.$invalid){
-        return;
-      }
-    },
+    handleSubmitForm() {},
 
-    async submitNewEmployee(){
+    async submitNewEmployee() {
       try {
+        this.isSubmitted = true;
+
+        this.$v.$touch();
+        if (this.$v.$invalid) {
+          this.$swal('Oops!', 'Você precisa incluir todos os campos requeridos', 'error');
+          return;
+        }
+
         await EmployeeService.createNewEmployee(this.employeeForm);
-        this.$router.push({
-          name: 'list',
-        })
+        this.$swal({
+          title: "Funcionário add com sucesso.",
+          icon: "success",
+          showConfirmButton: true,
+          allowOutsideClick: false,
+          allowEnterKey: true,
+          allowEscapeKey: false,
+        }).then((data) => {
+          this.$router.push({
+            name: "list",
+          });
+        });
       } catch (error) {
         console.log(error);
       }
-    }
+    },
   },
 };
 </script>
