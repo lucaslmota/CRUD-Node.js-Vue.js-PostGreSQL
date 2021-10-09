@@ -10,9 +10,9 @@ export default {
      * Método responsável por criar um novo(a) 'Employee'
      * (POST): localhost:3000/api/employees
      */
-    async createNewEmployee() {
+    async createNewEmployee(employee) {
         try {
-            const response = await Api().post('/employees');
+            const response = await Api().post('/employees',employee);
             return response.data;
         } catch (error) {
             console.log(error);

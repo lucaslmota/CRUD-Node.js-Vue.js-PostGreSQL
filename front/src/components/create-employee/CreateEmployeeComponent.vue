@@ -123,7 +123,7 @@
           </div>
           <!-- FIM DO BLOCO: Registro de Usuário -->
           <div>
-            <button class="btn btn-primary" type="submit">
+            <button @click="submitNewEmployee" class="btn btn-primary" type="submit">
               <i class="fas fa-user-plus"></i> Add funcionário
             </button>
           </div>
@@ -134,7 +134,9 @@
 </template>
 
 <script>
-import {required} from'vuelidate/lib/validators'
+import {required} from 'vuelidate/lib/validators';
+import EmployeeService from '../../services/EmployeeService';
+
 export default {
   comments: {
     name: "CreateEmployeeComponent",
@@ -142,11 +144,11 @@ export default {
   data() {
     return {
       employeeForm: {
-        name: "",
-        job_role: "",
-        salary: "",
-        birth: "",
-        employee_registration: "",
+        name: null,
+        job_role: null,
+        salary: null,
+        birth: null,
+        employee_registration: null
       },
       isSubmitted: false,
     };
@@ -169,6 +171,17 @@ export default {
         return;
       }
     },
+
+    async submitNewEmployee(){
+      try {
+        await EmployeeService.createNewEmployee(this.employeeForm);
+        this.$router.push({
+          name: 'list',
+        })
+      } catch (error) {
+        console.log(error);
+      }
+    }
   },
 };
 </script>
