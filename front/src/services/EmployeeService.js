@@ -37,7 +37,7 @@ export default {
      */
     async getEmployeesId(id) {
         try {
-            const response = await Api().get(`/employess/${id}`);
+            const response = await Api().get(`/employees/${id}`);
             return response.data
         } catch (error) {
             console.log(error);
@@ -49,9 +49,10 @@ export default {
      * (PUT): localhost:3000/api/employees/:id
      */
 
-    async updateEmployeeId(id){
+    async updateEmployeeId(employee){
         try {
-            const response = await Api().put(`/employess/${id}`);
+            const id = employee.employee_id;
+            const response = await Api().put(`/employees/${id}`, employee);
             return response.data;
         } catch (error) {
             console.log(error);

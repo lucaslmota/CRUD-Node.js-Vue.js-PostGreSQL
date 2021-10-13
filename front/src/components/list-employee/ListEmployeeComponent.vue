@@ -28,7 +28,10 @@
             >
           </td>
           <td>
-            <button class="btn btn-danger">
+            <button
+              @click="removeEmployee(employee.employee_id)"
+              class="btn btn-danger"
+            >
               <i class="fas fa-trash-alt"></i> Deletar
             </button>
           </td>
@@ -56,6 +59,30 @@ export default {
     async listAllEmployees() {
       const response = await EmployeeService.getEmployees();
       this.employees = response;
+    },
+
+    async removeEmployee(id) {
+      this.$swal({
+        title: "Você tem certeza que deseja deletar esse funcionário?",
+        text: "Atenção! este funcionário será excluído",
+        icon: "warning",
+        showConfirmButton: true,
+        allowOutsideClick: false,
+        allowEnterKey: true,
+        allowEscapeKey: false,
+        showCancelButton: true,
+        confirmButonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Sim! Por favor, apague-o",
+      }).then(async (result) => {
+        if (result.value) {
+          await EmployeeService.deleteEmployee(id);
+          this.$swal("Delete", "Successfully delete", "success");
+          this.listAllEmployees();
+        } else {
+          this.$swal("Cancelled", "Cancel deletion", "info");
+        }
+      });
     },
   },
 };
