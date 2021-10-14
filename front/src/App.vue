@@ -6,10 +6,10 @@
         <a class="navbar-brand order-md-last"> CRUD Vue.JS + PostgreSQL + Node.JS</a>
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <router-link class="nav-link" to="/">Creat New Employee</router-link>
+            <router-link class="nav-link" to="/">Criar novo funcionário</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/list-employees">List All Employees</router-link>
+            <router-link class="nav-link" to="/list-employees">Listar todos os funcionários</router-link>
           </li>
         </ul>
       </div>

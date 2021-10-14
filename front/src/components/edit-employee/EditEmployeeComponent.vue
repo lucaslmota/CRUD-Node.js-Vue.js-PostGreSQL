@@ -105,7 +105,7 @@ export default {
     async updateFormeEmployee() {
       await EmployeeService.updateEmployeeId(this.employeeForm);
       this.$swal({
-        title: "Employee updated successfully!",
+        title: "Funcionário atualizado com sucesso!",
         icon: "success",
         showConfirmButton: true,
         allowOutsideClick: false,

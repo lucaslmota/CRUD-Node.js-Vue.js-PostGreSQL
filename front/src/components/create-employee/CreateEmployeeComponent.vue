@@ -2,14 +2,14 @@
   <div class="container">
     <div class="card">
       <div class="card-header">
-        <h3>Add Employee</h3>
+        <h3>Adicionar Funcionário</h3>
       </div>
 
       <div class="card-body">
         <form v-on:submit.prevent="handleSubmitForm()">
           <!-- INÍCIO DO BLOCO: EMPLOYEE NAME -->
           <div class="form-group mb-3">
-            <label class="font-weigth-bold">Nome do empregado</label>
+            <label class="font-weigth-bold">Nome do funcionário</label>
             <input
               type="text"
               id="name"

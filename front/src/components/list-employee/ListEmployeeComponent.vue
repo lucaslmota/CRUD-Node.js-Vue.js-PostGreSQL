@@ -9,16 +9,16 @@
           <th class="text-center">Salário</th>
           <th class="text-center">Nascimento</th>
           <th class="text-center">Registro do funcionário</th>
-          <th class="text-center">Ações</th>
+          <th class="text-end">Ações</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="employee in employees" :key="employee.employee_id">
-          <td>{{ employee.name }}</td>
-          <td>{{ employee.job_role }}</td>
-          <td>{{ employee.salary }}</td>
-          <td>{{ employee.birth }}</td>
-          <td>{{ employee.employee_registration }}</td>
+          <td class="text-center">{{ employee.name }}</td>
+          <td class="text-center">{{ employee.job_role }}</td>
+          <td class="text-center">{{ employee.salary }}</td>
+          <td class="text-center">{{ employee.birth }}</td>
+          <td class="text-center">{{ employee.employee_registration }}</td>
           <td>
             <router-link
               :to="{ name: 'update', params: { id: employee.employee_id } }"
